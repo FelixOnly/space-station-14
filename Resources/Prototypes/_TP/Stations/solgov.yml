@@ -1,0 +1,70 @@
+- type: entity
+  abstract: true
+  id: TP14BaseStationSolGov
+
+- type: entity
+  id: TP14StandardStationEvent
+  parent:
+  - BaseStation
+  - BaseStationJobsSpawning
+  - BaseStationRecords
+  - TP14BaseStationSolGov
+  - BaseStationAlertLevels
+  components:
+  - type: Transform
+
+- type: entity
+  id: TP14StandardSolGovStationMinus
+  parent:
+  - BaseStation
+  - BaseStationNews
+  - BaseStationRecords
+  - BaseStationShuttles
+  - BaseStationEvacuation
+  - BaseStationAlertLevels
+  - BaseStationSiliconLawCrewsimov
+  - TP14BaseStationSolGov
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+
+
+# Just a modified copy of 'StandardNanotrasenStation'.
+- type: entity
+  id: TP14StandardSolGovStation
+  parent:
+  - BaseStation
+  - BaseStationNews
+  - BaseStationCargo
+  - BaseStationJobsSpawning
+  - BaseStationRecords
+  # - BaseStationArrivals # TRIESTE: no arrivals shuttle
+  - BaseStationShuttles
+  - BaseStationEvacuation # TODO: needs BaseStationCentcomm (SolGov map) or the emergency shuttle can't spawn
+  - BaseStationAlertLevels
+  - BaseStationSiliconLawCrewsimov
+  - BaseStationAllEventsEligible
+  - TP14BaseStationSolGov
+  - BaseStationDeliveries
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+
+# Same as 'TP14StandardSolGovStation', minus evac. Only Trieste gets the emergency shuttle.
+- type: entity
+  id: TP14StandardSolGovStationNoEvac
+  parent:
+  - BaseStation
+  - BaseStationNews
+  - BaseStationCargo
+  - BaseStationJobsSpawning
+  - BaseStationRecords
+  - BaseStationShuttles
+  - BaseStationAlertLevels
+  - BaseStationSiliconLawCrewsimov
+  - BaseStationAllEventsEligible
+  - TP14BaseStationSolGov
+  - BaseStationDeliveries
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform

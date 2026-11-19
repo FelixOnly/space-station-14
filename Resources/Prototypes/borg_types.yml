@@ -58,6 +58,12 @@
   - Engineering
   - Science
 
+  # _TP-Edit-Start: waterproof — these borgs are meant to work underwater
+  addComponents:
+  - type: InGas
+    damagedByGas: false
+  # _TP-Edit-End
+
   # Visual
   inventoryTemplateId: borgShort
   spriteBodyState: engineer
@@ -94,6 +100,12 @@
   radioChannels:
   - Supply
   - Science
+
+  # _TP-Edit-Start: waterproof — these borgs are meant to work underwater
+  addComponents:
+  - type: InGas
+    damagedByGas: false
+  # _TP-Edit-End
 
   # Visual
   inventoryTemplateId: borgTall

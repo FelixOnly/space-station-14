@@ -12,6 +12,14 @@
   - type: RandomizedSpeechBarks
   # WL-Changes-end
   - type: Posing
+  # _TP-Edit-Start
+  - type: InGas
+    damagedByGas: true
+    gasThreshold: 50 # _TP: only takes short-circuit damage once truly deep underwater
+    damage:
+      types:
+        Shock: 5
+  # _TP-Edit-End
   - type: Reactive
     groups:
       Acidic: [Touch]
