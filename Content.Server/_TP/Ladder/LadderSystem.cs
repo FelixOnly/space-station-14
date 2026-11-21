@@ -76,7 +76,8 @@ public sealed partial class LadderSystem : EntitySystem
         if (args.Handled)
             return;
 
-        if (!HasComp<BorgChassisComponent>(args.User))
+        // _TP: the Rotund Stepfather climbs ladders like a borg
+        if (!HasComp<BorgChassisComponent>(args.User) && !HasComp<Shared._TP.Mechs.Components.StepfatherComponent>(args.User))
             return;
 
         HandleClimb(ladderUid, args.User);
