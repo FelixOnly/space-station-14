@@ -13,7 +13,7 @@
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
-  maxLimit: 3
+  maxLimit: 5 # Wormix-Edit
   loadouts:
   - SpaceLaw # Corvax-HyperLink
   # WL-Changes-Start
@@ -26,6 +26,10 @@
   - PlushieSpaceLizard
   - ThreeCandles
   - Lighter
+  # Wormix-Start
+  - FlippoLighter
+  - Matchbox
+  # Wormix-End
   - CigPackGreen
   - CigPackRed
   - CigPackBlue
@@ -62,6 +66,41 @@
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
   - TowelColorWhite
+  # Wormix-Start
+  - LuxuryPen
+  - DrinkMugMetal
+  - DrinkMug
+  - DrinkMugRed
+  - DrinkMugGreen
+  - DrinkMugBlue
+  - DrinkMugBlack
+  - DrinkMugOne
+  - DrinkMugHeart
+  - DrinkMugDog
+  - DrinkMugMoebius
+  - DrinkMugRainbow
+  - DrinkVacuumFlask
+  - PhotoCamera
+  - BarberScissors
+  - HairComb
+  - PocketMirror
+  - MakeupBrush
+  - PokerCardBoxFilled
+  - TarotCardDeck
+  - TreasureCoinIron
+  - d2Dice
+  - d6Dice
+  - d20Dice
+  - Whistle
+  - Basketball
+  - Football
+  - TennisBall
+  - ClothingBackpackDuffelTennisGame
+  - Accordion
+  - AcousticGuitar
+  - Flute
+  - Harmonica
+  # Wormix-End
   # Corvax-Loadouts-Start
   - ClothingNeckAtharaPin
   - ClothingNeckCorvaxPin
