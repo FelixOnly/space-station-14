@@ -52,10 +52,19 @@ public sealed partial class GuideMicrowaveGroupEmbed : BoxContainer, IDocumentTa
     {
         var prototypes = _prototype.EnumeratePrototypes<MicrowaveMealRecipePrototype>()
             .Where(p => p.Group.Equals(group))
-            .OrderBy(p => _prototype.Index<EntityPrototype>(p.Result).Name);
+            .OrderBy(p => _prototype.TryIndex(p.Result, out var result) ? result.Name : p.ID); // Wormix-Changes
 
         foreach (var recipe in prototypes)
         {
+            if (recipe.HideInGuidebook) // Wormix-Changes: ported from ADT
+                continue;
+
+            // Wormix-Changes-start: ported from ADT
+            const int activeTypes = (int) (MicrowaveRecipeType.Microwave | MicrowaveRecipeType.ADTMicrowave | MicrowaveRecipeType.ADTAssembler | MicrowaveRecipeType.MedicalAssembler | MicrowaveRecipeType.TribalOven);
+            if ((recipe.RecipeType & activeTypes) == 0)
+                continue;
+            // Wormix-Changes-end
+
             var embed = new GuideMicrowaveEmbed(recipe);
             AddChild(embed);
         }
