@@ -1,0 +1,19 @@
+- type: entity
+  name: sea water miner
+  parent: GasMinerBase
+  id: TP14SeaWaterMiner
+  suffix: Shuttle, 300kPa
+  placement:
+    mode: SnapgridCenter
+  components:
+    - type: GasMiner
+      spawnGas: Water
+
+- type: entity
+  name: sea water miner
+  parent: TP14SeaWaterMiner
+  id: TP14SeaWaterMinerStation
+  suffix: Station, 1000kPa
+  components:
+    - type: GasMiner
+      maxExternalPressure: 1000

@@ -208,3 +208,8 @@ guide-entry-rules-ban-durations = Ban Durations
 
 guide-entry-writing = Writing
 guide-entry-glossary = Glossary
+
+guide-entry-stepfather = Stepfather Guidelines
+guide-entry-the-artifact = The Artifact
+guide-entry-flooding = Flooding
+guide-entry-storm-array = Storm Array

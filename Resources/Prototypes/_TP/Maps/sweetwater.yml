@@ -1,0 +1,41 @@
+# Used by the Trieste map file for the triple-M system.
+- type: gameMap
+  id: TP14GameMapSweetwater
+  mapName: Sweetwater
+  mapPath: /Maps/_TP/sweetwater.yml
+  minPlayers: 0
+  stations:
+    Sweetwater:
+      stationProto: TP14StandardSolGovStationNoEvac
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: "Sweetwater"
+        # No extra grids (trade stations, ruins, dungeon wrecks) on the water world.
+        - type: GridSpawn
+          groups: {}
+        # Cargo shuttle is a grid too; point it at the empty dummy map like Corvax terra does.
+        - type: StationCargoShuttle
+          path: /Maps/Test/empty.yml
+        - type: StationJobs
+          availableJobs:
+            # Service
+            Janitor: [2, 2]
+            Chef: [1, 1]
+            Bartender: [1, 1]
+            ServiceWorker: [2, 2]
+            # Engineering
+            AtmosphericTechnician: [2, 2]
+            StationEngineer: [4, 4]
+            TechnicalAssistant: [2, 3]
+            # Civilian
+            Passenger: [-1, -1]
+            Librarian: [1, 1]
+            Musician: [1, 1]
+            Clown: [1, 1]
+            Mime: [1, 1]
+            #science
+            Scientist: [4, 4]
+            ResearchAssistant: [1, 2]
+            #silicon
+            Borg: [2, 2]
+

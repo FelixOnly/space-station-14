@@ -509,6 +509,15 @@
   components:
   - type: Sprite
     sprite: Structures/Walls/solid-rust.rsi
+  # _TP-Edit-Start
+  # TRIESTE: does not hold water pressure
+  - type: InGas
+    damagedByGas: true
+    gasThreshold: 75
+    damage:
+      types:
+        Blunt: 5
+  # _TP-Edit-End
   - type: Icon
     sprite: Structures/Walls/solid-rust.rsi
     state: rgeneric

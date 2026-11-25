@@ -55,6 +55,15 @@
         - TabletopMachineLayer
   - type: PlacementReplacement
     key: lights
+  # _TP-Edit-Start
+  # TRIESTE: Water pressure shatters them
+  - type: InGas
+    damagedByGas: true
+    gasThreshold: 50
+    damage:
+      types:
+        Blunt: 3
+  # _TP-Edit-End
 
 - type: entity
   abstract: true

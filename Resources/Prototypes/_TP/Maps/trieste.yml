@@ -1,0 +1,51 @@
+- type: gameMap
+  id: TP14GameMapTrieste
+  mapName: Trieste Port
+  mapPath: /Maps/_TP/trieste.yml
+  minPlayers: 0
+  stations:
+    Trieste:
+      stationProto: TP14StandardSolGovStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: "Trieste Port"
+        # No extra grids (trade stations, ruins, dungeon wrecks) on the water world.
+        - type: GridSpawn
+          groups: {}
+        # Cargo shuttle is a grid too; point it at the empty dummy map like Corvax terra does.
+        - type: StationCargoShuttle
+          path: /Maps/Test/empty.yml
+        - type: MultiMapManager
+          maps:
+            "Sweetwater": TP14GameMapSweetwater
+            "Waste Water": TP14GameMapWasteWater
+        - type: StationJobs
+          availableJobs:
+            # Command
+            Captain: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            ChiefEngineer: [ 1, 1 ]
+            ChiefMedicalOfficer: [ 1, 1 ]
+            HeadOfSecurity: [ 1, 1 ]
+            Quartermaster: [ 1, 1 ]
+            ResearchDirector: [ 1, 1 ]
+            # Service
+            Botanist: [ 2, 2 ]
+            Reporter: [ 1, 1 ]
+            # Medical
+            Chemist: [ 2, 2 ]
+            MedicalDoctor: [ 3, 3 ]
+            MedicalIntern: [ 2, 2 ]
+            Paramedic: [ 1, 1 ]
+            Psychologist: [ 1, 1 ]
+            # Security
+            Warden: [ 1, 1 ]
+            SecurityOfficer: [ 4, 4 ]
+            SecurityCadet: [ 3, 3 ]
+            Lawyer: [ 1, 1 ]
+            Detective: [ 1, 1 ]
+            # Cargo
+            CargoTechnician: [ 2, 3 ]
+            # Citizen
+            Passenger: [ -1, -1 ]
+            Chaplain: [ 1, 1 ]
