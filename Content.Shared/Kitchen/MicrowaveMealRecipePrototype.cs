@@ -3,6 +3,8 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization; // Wormix-Changes
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom; // Wormix-Changes
 
 namespace Content.Shared.Kitchen;
 
@@ -57,7 +59,41 @@ public sealed partial class MicrowaveMealRecipePrototype : IPrototype
     /// </remarks>
     [DataField]
     public int Priority;
+
+    // Wormix-Changes-start: ported from ADT - machine type filtering for guidebook embeds
+    /// <summary>
+    /// Which appliance types this recipe is available in.
+    /// </summary>
+    [DataField(customTypeSerializer: typeof(FlagSerializer<MicrowaveRecipeTypeFlags>))]
+    public int RecipeType = (int) MicrowaveRecipeType.Microwave;
+
+    /// <summary>
+    /// Hides this recipe from guidebook group embeds.
+    /// </summary>
+    [DataField]
+    public bool HideInGuidebook;
+    // Wormix-Changes-end
 }
+
+// Wormix-Changes-start: ported from ADT - microwave recipe types, to limit certain recipes to certain machines
+/// <summary>
+/// Microwave recipe types, to limit certain recipes to certain machines.
+/// </summary>
+[Flags, FlagsFor(typeof(MicrowaveRecipeTypeFlags))]
+[Serializable, NetSerializable]
+public enum MicrowaveRecipeType : int
+{
+    Microwave = 1,
+    Oven = 2,
+    Assembler = 4,
+    MedicalAssembler = 8,
+    TribalOven = 16,
+    ADTMicrowave = 32,
+    ADTAssembler = 64,
+}
+
+public sealed class MicrowaveRecipeTypeFlags { }
+// Wormix-Changes-end
 
 /// <summary>
 /// A data value representing ingredients for an appliance recipe.
