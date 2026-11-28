@@ -139,6 +139,7 @@
   name: loadout-group-captain-head
   minLimit: 0
   loadouts:
+  - CaptainCapcapSenior
   - CaptainHead
   - CaptainCap
   # Corvax-Loadouts-Start
@@ -155,6 +156,8 @@
   id: CaptainJumpsuit
   name: loadout-group-captain-jumpsuit
   loadouts:
+  - CaptainJumpsuitMilitary
+  - CaptainSummerShirt
   - CaptainJumpsuit
   - CaptainJumpskirt
   - CaptainFormalSuit
@@ -170,6 +173,8 @@
   name: loadout-group-captain-neck
   minLimit: 0
   loadouts:
+  - CaptainEnsemble
+  - VeteranCaptainCloak
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
@@ -187,6 +192,8 @@
   id: CaptainOuterClothing
   name: loadout-group-captain-outerclothing
   loadouts:
+  - CaptainJacket
+  - CaptainWintercoatGoob
   - CaptainOuterClothing
   - CaptainCoat # Corvax-Loadouts
   - CaptainWintercoat
@@ -226,6 +233,8 @@
   id: HoPJumpsuit
   name: loadout-group-hop-jumpsuit
   loadouts:
+  - HoPJumpsuitMilitary
+  - HoPSummerShirt
   - HoPJumpsuit
   - HoPJumpskirt
   # Corvax-Loadouts-Start
@@ -238,6 +247,7 @@
   name: loadout-group-hop-neck
   minLimit: 0
   loadouts:
+  - HeadOfPersonnelEnsemble
   - HoPCloak
   - HoPMantle
 
@@ -261,6 +271,7 @@
   name: loadout-group-hop-outerclothing
   minLimit: 0
   loadouts:
+  - HoPLongcoat
   - HoPWintercoat
 
 #- type: loadoutGroup
@@ -274,6 +285,26 @@
   id: PassengerJumpsuit
   name: loadout-group-passenger-jumpsuit
   loadouts:
+  - BlackMJ
+  - BlackMJAlt
+  - BlueMJ
+  - BrownMJ
+  - ContractorJumpsuit
+  - ContractorJumpsuitTac
+  - DarkBlueMJ
+  - DarkGreenMJ
+  - GreenMJ
+  - GreyMJ
+  - JumpsuitRecruit
+  - LightBrownMJ
+  - MaroonMJ
+  - OrangeMJ
+  - PinkMJ
+  - PurpleMJ
+  - QuarterzipJumpsuit
+  - RedMJ
+  - TealMJ
+  - YellowMJ
   - GreyJumpsuit
   - GreyJumpskirt
   - AncientJumpsuit
@@ -481,6 +512,10 @@
   id: BartenderJumpsuit
   name: loadout-group-bartender-jumpsuit
   loadouts:
+  - BartenderJumpskirtGoob
+  - BartenderJumpsuitGoob
+  - BartenderJumpsuitPurpleGoob
+  - ServiceMJ
   # WL-change-start: wardrobe refresh
   - ClassicWhiteShirtBlackPants
   - ClassicBlackShirtBlackPants
@@ -648,6 +683,9 @@
   id: ChefJumpsuit
   name: loadout-group-chef-jumpsuit
   loadouts:
+  - ChefJumpskirtGoob
+  - ChefJumpsuitGoob
+  - ServiceMJ
   # WL-change-start: wardrobe refresh
   - ClassicWhiteShirtBlackPants
   - ClassicBlackShirtBlackPants
@@ -794,6 +832,11 @@
   id: LibrarianJumpsuit
   name: loadout-group-librarian-jumpsuit
   loadouts:
+  - CuratorJumpskirtGoob
+  - CuratorJumpsuitGoob
+  - LibrarianJumpskirtGoob
+  - LibrarianJumpsuitGoob
+  - ServiceMJ
   # WL-change-start: wardrobe refresh
   - ClassicWhiteShirtTanPants
   - ClassicWhiteShirtRedPants
@@ -857,6 +900,7 @@
   id: LawyerJumpsuit
   name: loadout-group-lawyer-jumpsuit
   loadouts:
+  - ServiceMJ
   # WL-change-start: wardrobe refresh
   - ClassicBlackShirtBlackPants
   - ClassicBlackShirtBluePants
@@ -943,6 +987,7 @@
   id: ChaplainJumpsuit
   name: loadout-group-chaplain-jumpsuit
   loadouts:
+  - ServiceMJ
   - ChaplainJumpsuit
   - ChaplainJumpskirt
   - ChaplainRobesLight
@@ -1122,12 +1167,14 @@
   name: loadout-group-janitor-head
   minLimit: 0
   loadouts:
+  - JanitorHeadSenior
   - JanitorHead
 
 - type: loadoutGroup
   id: JanitorJumpsuit
   name: loadout-group-janitor-jumpsuit
   loadouts:
+  - ServiceMJ
   - JanitorJumpsuit
   - JanitorJumpskirt
 # WL-Change-start
@@ -1286,6 +1333,7 @@
   name: loadout-group-botanist-head
   minLimit: 0
   loadouts:
+  - BotanistBeret
   - BotanistHead
   - BotanistBandana
 
@@ -1293,6 +1341,8 @@
   id: BotanistJumpsuit
   name: loadout-group-botanist-jumpsuit
   loadouts:
+  - HydroMJ
+  - ServiceMJ
   - BotanistJumpsuit
   - BotanistJumpskirt
   - BotanistOveralls
@@ -1815,6 +1865,7 @@
   id: MusicianJumpsuit
   name: loadout-group-musician-jumpsuit
   loadouts:
+  - ServiceMJ
   - MusicianJumpsuit
   - MusicianJumpskirt
 # WL-Change-start
@@ -2018,6 +2069,8 @@
   id: QuartermasterJumpsuit
   name: loadout-group-quartermaster-jumpsuit
   loadouts:
+  - QMSummerShirt
+  - QuartermasterMJ
   - QuartermasterJumpsuit
   - QuartermasterJumpskirt
   - QuartermasterTurtleneck
@@ -2030,6 +2083,7 @@
   name: loadout-group-quartermaster-neck
   minLimit: 0
   loadouts:
+  - QuartermasterEnsemble
   - QuartermasterCloak
   - QuartermasterMantle
 
@@ -2069,6 +2123,7 @@
   name: loadout-group-cargo-technician-head
   minLimit: 0
   loadouts:
+  - CargoTechnicianHeadMail
   - CargoTechnicianHead
   - PostmanHead
   - CargoTechnicianBeret # WL-berets-resprite
@@ -2077,6 +2132,11 @@
   id: CargoTechnicianJumpsuit
   name: loadout-group-cargo-technician-jumpsuit
   loadouts:
+  - CargoTechMJ
+  - CargoTechnicianJumpskirtMail
+  - CargoTechnicianJumpsuitMail
+  - CargoTechnicianOveralls
+  - MailCarrierMJ
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
   - ClothingUniformJumpsuitPostman # WL-Changes
@@ -2221,6 +2281,7 @@
   name: loadout-group-cargo-technician-outerclothing
   minLimit: 0
   loadouts:
+  - CargoTechnicianWintercoatMail
   - CargoTechnicianWintercoat
   - PostmanJacket # WL-Changes
 
@@ -2299,6 +2360,8 @@
   id: ChiefEngineerJumpsuit
   name: loadout-group-chief-engineer-jumpsuit
   loadouts:
+  - CESummerShirt
+  - ChiefEngineerMJ
   - ChiefEngineerJumpsuit
   - ChiefEngineerJumpskirt
   - ChiefEngineerTurtleneck
@@ -2351,6 +2414,12 @@
   name: loadout-group-chief-engineer-neck
   minLimit: 0
   loadouts:
+  - ClothingNeckCloakGreenCe
+  - ClothingNeckCloakWhiteCe
+  - ClothingNeckEnsembleChiefEngineerGreen
+  - ClothingNeckEnsembleChiefEngineerWhite
+  - ClothingNeckMantleOrangeCE
+  - ClothingNeckMantleWhiteCE
   - ChiefEngineerCloak
   - ChiefEngineerMantle
 
@@ -2378,6 +2447,7 @@
   id: TechnicalAssistantJumpsuit
   name: loadout-group-technical-assistant-jumpsuit
   loadouts:
+  - EngiMJ
   - YellowJumpsuit
   - YellowJumpskirt
   - EngineerAssistantJumpsuitCasual #WL Workers Lyvsi engi resprite
@@ -2532,6 +2602,8 @@
   id: StationEngineerJumpsuit
   name: loadout-group-station-engineer-jumpsuit
   loadouts:
+  - EngiMJ
+  - StationEngineerJumpsuitCasual
   - StationEngineerJumpsuit
   - StationEngineerJumpskirt
   - StationEngineerHazardsuit
@@ -2706,6 +2778,7 @@
   id: AtmosphericTechnicianJumpsuit
   name: loadout-group-atmospheric-technician-jumpsuit
   loadouts:
+  - AtmosMJ
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
   - AtmosphericTechnicianJumpsuitCasual
@@ -2910,6 +2983,7 @@
   name: loadout-group-research-director-neck
   minLimit: 0
   loadouts:
+  - ResearchDirectorEnsemble
   - ResearchDirectorMantle
   - ResearchDirectorCloak
 
@@ -2917,6 +2991,10 @@
   id: ResearchDirectorJumpsuit
   name: loadout-group-research-director-jumpsuit
   loadouts:
+  - RDSummerShirt
+  - ResearchDirectorJumpskirtAlt
+  - ResearchDirectorJumpsuitAlt
+  - ResearchDirectorMJ
   - ResearchDirectorJumpsuit
   - ResearchDirectorJumpskirt
   # Corvax-Loadouts-Start
@@ -2969,6 +3047,7 @@
   name: loadout-group-research-director-outerclothing
   minLimit: 0
   loadouts:
+  - ResearchDirectorLabCoatPurple
   - ResearchDirectorLabCoat
   - ResearchDirectorWintercoat
 
@@ -3006,6 +3085,9 @@
   id: ScientistJumpsuit
   name: loadout-group-scientist-jumpsuit
   loadouts:
+  - ResearchMJ
+  - ScientistFormal
+  - SeniorResearcherMJ
   - ScientistJumpsuit
   - ScientistJumpskirt
   - RoboticistJumpsuit
@@ -3194,6 +3276,7 @@
   id: ResearchAssistantJumpsuit
   name: loadout-group-research-assistant-jumpsuit
   loadouts:
+  - ResearchMJ
   #WL-Changes: Student uniform start
   - StudentJumpsuit
   - StudentJumpskirt
@@ -3337,6 +3420,7 @@
   name: loadout-group-head-of-security-head
   minLimit: 0
   loadouts:
+  - HeadofSecuritySpecialBeret
   - HeadofSecurityHead
   - HeadofSecurityBeret
 
@@ -3344,6 +3428,8 @@
   id: HeadofSecurityJumpsuit
   name: loadout-group-head-of-security-jumpsuit
   loadouts:
+  - HoSMJ
+  - HoSSummerShirt
   - HeadofSecurityJumpsuit
   - HeadofSecurityJumpskirt
   - HeadofSecurityTurtleneck
@@ -3376,6 +3462,7 @@
   name: loadout-group-head-of-security-neck
   minLimit: 0
   loadouts:
+  - HeadOfSecurityEnsemble
   - HeadofSecurityCloak
   - HeadofSecurityMantle
   - HeadofSecurityShoulderMantle # Corvax-Loadouts
@@ -3384,6 +3471,8 @@
   id: HeadofSecurityOuterClothing
   name: loadout-group-head-of-security-outerclothing
   loadouts:
+  - HeadofSecurityGreatCoat
+  - HeadofSecurityVestWeb
   - HeadofSecurityCoat
   - HeadofSecurityGreatcoat # Corvax-Loadouts
   - HeadofSecurityWinterCoat
@@ -3410,6 +3499,7 @@
   id: WardenJumpsuit
   name: loadout-group-warden-jumpsuit
   loadouts:
+  - WardenMJ
   - WardenJumpsuit
   - WardenJumpskirt
   - JumpsuitSeniorDSS # WL-Changes: DSS adding, WL-redo-427-resprite
@@ -3418,6 +3508,7 @@
   id: WardenOuterClothing
   name: loadout-group-warden-outerclothing
   loadouts:
+  - WardenCoatBlue
   - WardenCoat
   - WardenArmoredWinterCoat
 
@@ -3433,6 +3524,8 @@
   name: loadout-group-security-head
   minLimit: 0
   loadouts:
+  - SecurityHelmetAlt
+  - SideCap
   - SecurityHelmet
   - SecurityBeret
   - SecurityHat
@@ -3444,6 +3537,9 @@
   id: SecurityJumpsuit
   name: loadout-group-security-jumpsuit
   loadouts:
+  - SecurityMJ
+  - SecurityMJSenior
+  - VeteranOfficerBlackJumpsuit
   # WL-change-start: wardrobe refresh
   - ClassicBlackShirtBlackPants
   - ClassicBlackShirtDarkPants
@@ -3492,6 +3588,9 @@
   id: SecurityOuterClothing
   name: loadout-group-security-outerclothing
   loadouts:
+  - SecurityOfficerWintercoatGoob
+  - VeteranOfficerArmor
+  - WinterCoatSeniorSecArmored
   - ArmorVestSec # Corvax
   - ArmorVest
   # - ArmorVestSlim # WL-Changes-RemovingSlimArmorFromSec
@@ -3502,6 +3601,8 @@
   id: SecurityShoes
   name: loadout-group-security-shoes
   loadouts:
+  - JackBootsGoob
+  - SecurityWinterBootsGoob
   - JackSecBoots # Corvax
   - JackBoots
   - JackBootsToeless # WL-Changes
@@ -3612,6 +3713,7 @@
   id: SecurityCadetJumpsuit
   name: loadout-group-security-cadet-jumpsuit
   loadouts:
+  - RedMJ
   # WL-change-start: wardrobe refresh
   - ClassicBlackShirtBlackPants
   - ClassicBlackShirtDarkPants
@@ -3656,6 +3758,9 @@
   id: ReporterJumpsuit
   name: loadout-group-reporter-jumpsuit
   loadouts:
+  - JournalistJumpsuitGoob
+  - ReporterDress
+  - ReporterJumpsuitGoob
   # WL-change-start: wardrobe refresh
   - ClassicWhiteShirtBlackPants
   - ClassicWhiteShirtBluePants

@@ -16,6 +16,8 @@
             <cc:CommandButton Command="adminlogs" Text="{Loc admin-player-actions-window-admin-logs}"/>
             <cc:CommandButton Command="faxui" Text="{Loc admin-player-actions-window-admin-fax}"/>
             <cc:CommandButton Command="achatwindow" Text="{Loc admin-player-actions-window-admin-chat}"/>
+            <!-- Wormix: playtime grant window. -->
+            <cc:CommandButton Command="playtimegrantui" Text="{Loc playtime-grant-window-title}" />
         </GridContainer>
     </BoxContainer>
 </Control>
