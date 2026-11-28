@@ -1,3 +1,4 @@
+using Content.Client._ADT.UserInterface.Chat; // Wormix-Changes
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.RichText;
 using Content.Client.UserInterface.Systems.Chat.Controls;
@@ -25,8 +26,11 @@ public partial class ChatBox : UIWidget, IEntityLinkClickHandler
 
     private readonly ISawmill _sawmill;
     private readonly ChatUIController _controller;
+    private readonly ChatSearchController _searchController; // Wormix-Changes
 
     public bool Main { get; set; }
+
+    public string SearchFilter { get; private set; } = string.Empty; // Wormix-Changes
 
     public ChatSelectChannel SelectedChannel => ChatInput.ChannelSelector.SelectedChannel;
 
@@ -43,7 +47,13 @@ public partial class ChatBox : UIWidget, IEntityLinkClickHandler
         ChatInput.ChannelSelector.OnChannelSelect += OnChannelSelect;
         ChatInput.FilterButton.Popup.OnChannelFilter += OnChannelFilter;
         ChatInput.FilterButton.Popup.OnNewHighlights += OnNewHighlights;
+        // Wormix-Changes-start
+        ChatInput.OnSearchButtonPressed += ToggleSearch;
+        ChatSearch.OnSearchChanged += OnSearchTextChanged;
+        ChatSearch.OnSearchClosed += CloseSearch;
+        // Wormix-Changes-end
         _controller = UserInterfaceManager.GetUIController<ChatUIController>();
+        _searchController = UserInterfaceManager.GetUIController<ChatSearchController>(); // Wormix-Changes
         _controller.MessageAdded += OnMessageAdded;
         _controller.HighlightsUpdated += OnHighlightsUpdated;
         _controller.RegisterChat(this);
@@ -62,6 +72,14 @@ public partial class ChatBox : UIWidget, IEntityLinkClickHandler
             return;
         }
 
+        // Wormix-Changes-start
+        if (!string.IsNullOrWhiteSpace(SearchFilter)
+            && !_searchController.MatchesQuery(msg, SearchFilter))
+        {
+            return;
+        }
+        // Wormix-Changes-end
+
         if (msg is { Read: false, AudioPath: { } })
             _entManager.System<AudioSystem>().PlayGlobal(msg.AudioPath, Filter.Local(), false, AudioParams.Default.AddVolume(msg.AudioVolume));
 
@@ -72,6 +90,47 @@ public partial class ChatBox : UIWidget, IEntityLinkClickHandler
         AddLine(msg.WrappedMessage, color);
     }
 
+    // Wormix-Changes-start
+    public void SetSearchFilter(string filter)
+    {
+        SearchFilter = filter.Trim();
+        Repopulate();
+    }
+
+    private void ToggleSearch()
+    {
+        if (SearchPanel.Visible)
+        {
+            CloseSearch();
+        }
+        else
+        {
+            OpenSearch();
+        }
+    }
+
+    private void OpenSearch()
+    {
+        SearchPanel.Visible = true;
+        ChatSearch.FocusSearch();
+    }
+
+    private void CloseSearch()
+    {
+        if (!SearchPanel.Visible)
+            return;
+
+        SearchPanel.Visible = false;
+        ChatSearch.SearchInput.Clear();
+        _searchController.ClearSearch(this);
+    }
+
+    private void OnSearchTextChanged(string query)
+    {
+        _searchController.SetSearch(this, query);
+    }
+    // Wormix-Changes-end
+
     private void OnHighlightsUpdated(string highlights)
     {
         ChatInput.FilterButton.Popup.UpdateHighlights(highlights);
@@ -80,10 +139,10 @@ public partial class ChatBox : UIWidget, IEntityLinkClickHandler
     private void OnChannelSelect(ChatSelectChannel channel)
     {
         _controller.UpdateSelectedChannel(this);
-        // WL-Changes: Alt Typing Indicators Start
+        // Wormix-Changes: Alt Typing Indicators Start
         if (ChatInput.Input.HasKeyboardFocus() && !string.IsNullOrEmpty(ChatInput.Input.Text))
             _controller.NotifySpecificChatTextChange(SelectedChannel, ChatInput.Input.Text);
-        // WL-Changes: Alt Typing Indicators End
+        // Wormix-Changes: Alt Typing Indicators End
     }
 
     public void Repopulate()
@@ -215,18 +274,18 @@ public partial class ChatBox : UIWidget, IEntityLinkClickHandler
         _controller.UpdateSelectedChannel(this);
 
         // Warn typing indicator about change
-        // WL-Changes: Alt Typing Indicators Start
+        // Wormix-Changes: Alt Typing Indicators Start
         _controller.NotifySpecificChatTextChange(SelectedChannel, ChatInput.Input.Text);
-        // WL-Changes: Alt Typing Indicators End
+        // Wormix-Changes: Alt Typing Indicators End
     }
 
     private void OnFocusEnter(LineEditEventArgs args)
     {
         // Warn typing indicator about focus
-        // WL-Changes: Alt Typing Indicators Start
+        // Wormix-Changes: Alt Typing Indicators Start
         if (!string.IsNullOrEmpty(ChatInput.Input.Text))
             _controller.NotifySpecificChatTextChange(SelectedChannel, ChatInput.Input.Text);
-        // WL-Changes: Alt Typing Indicators End
+        // Wormix-Changes: Alt Typing Indicators End
         _controller.NotifyChatFocus(true);
 
         // Update the typing preview speech bubble above character's head.
@@ -252,5 +311,10 @@ public partial class ChatBox : UIWidget, IEntityLinkClickHandler
         ChatInput.Input.OnKeyBindDown -= OnInputKeyBindDown;
         ChatInput.Input.OnTextChanged -= OnTextChanged;
         ChatInput.ChannelSelector.OnChannelSelect -= OnChannelSelect;
+        // Wormix-Changes-start
+        ChatInput.OnSearchButtonPressed -= ToggleSearch;
+        ChatSearch.OnSearchChanged -= OnSearchTextChanged;
+        ChatSearch.OnSearchClosed -= CloseSearch;
+        // Wormix-Changes-end
     }
 }

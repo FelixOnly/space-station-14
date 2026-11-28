@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._ADT.SpawnMenu; // ADT-Tweak
 using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Sandbox;
@@ -40,6 +41,11 @@ public sealed partial class SandboxUIController : UIController, IOnStateChanged<
     private EntitySpawningUIController EntitySpawningController => UIManager.GetUIController<EntitySpawningUIController>();
     private TileSpawningUIController TileSpawningController => UIManager.GetUIController<TileSpawningUIController>();
     private DecalPlacerUIController DecalPlacerController => UIManager.GetUIController<DecalPlacerUIController>();
+    // ADT-Tweak-Start
+    private ADTEntitySpawningUIController ADTEntitySpawningController => UIManager.GetUIController<ADTEntitySpawningUIController>();
+    private ADTTileSpawningUIController ADTTileSpawningController => UIManager.GetUIController<ADTTileSpawningUIController>();
+    private ADTDecalSpawningUIController ADTDecalSpawningController => UIManager.GetUIController<ADTDecalSpawningUIController>();
+    // ADT-Tweak-End
 
     private MenuButton? SandboxButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.SandboxButton;
 
@@ -55,7 +61,7 @@ public sealed partial class SandboxUIController : UIController, IOnStateChanged<
             {
                 if (!_admin.CanAdminPlace())
                     return;
-                EntitySpawningController.ToggleWindow();
+                ADTEntitySpawningController.ToggleWindow(); // ADT-Tweak
             }));
         _input.SetInputCommand(ContentKeyFunctions.OpenSandboxWindow,
             InputCmdHandler.FromDelegate(_ => ToggleWindow()));
@@ -64,14 +70,14 @@ public sealed partial class SandboxUIController : UIController, IOnStateChanged<
             {
                 if (!_admin.CanAdminPlace())
                     return;
-                TileSpawningController.ToggleWindow();
+                ADTTileSpawningController.ToggleWindow(); // ADT-Tweak
             }));
         _input.SetInputCommand(ContentKeyFunctions.OpenDecalSpawnWindow,
             InputCmdHandler.FromDelegate(_ =>
             {
                 if (!_admin.CanAdminPlace())
                     return;
-                DecalPlacerController.ToggleWindow();
+                ADTDecalSpawningController.ToggleWindow(); // ADT-Tweak
             }));
 
         CommandBinds.Builder
@@ -127,9 +133,11 @@ public sealed partial class SandboxUIController : UIController, IOnStateChanged<
                 _console.ExecuteCommand($"rmcomp {pnent.Id} StationAiOverlay");
         };
         _window.RespawnButton.OnPressed += _ => _sandbox.Respawn();
-        _window.SpawnTilesButton.OnPressed += _ => TileSpawningController.ToggleWindow();
-        _window.SpawnEntitiesButton.OnPressed += _ => EntitySpawningController.ToggleWindow();
-        _window.SpawnDecalsButton.OnPressed += _ => DecalPlacerController.ToggleWindow();
+        // ADT-Tweak-Start
+        _window.SpawnTilesButton.OnPressed += _ => ADTTileSpawningController.ToggleWindow();
+        _window.SpawnEntitiesButton.OnPressed += _ => ADTEntitySpawningController.ToggleWindow();
+        _window.SpawnDecalsButton.OnPressed += _ => ADTDecalSpawningController.ToggleWindow();
+        // ADT-Tweak-End
         _window.GiveFullAccessButton.OnPressed += _ => _sandbox.GiveAdminAccess();
         _window.GiveAghostButton.OnPressed += _ => _sandbox.GiveAGhost();
         _window.ToggleLightButton.OnToggled += _ => _sandbox.ToggleLight();
@@ -193,6 +201,11 @@ public sealed partial class SandboxUIController : UIController, IOnStateChanged<
     {
         _window?.Close();
         EntitySpawningController.CloseWindow();
+        // ADT-Tweak-Start
+        ADTEntitySpawningController.CloseWindow();
+        ADTTileSpawningController.CloseWindow();
+        ADTDecalSpawningController.CloseWindow();
+        // ADT-Tweak-End
         TileSpawningController.CloseWindow();
     }
 

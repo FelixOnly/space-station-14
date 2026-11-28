@@ -1,0 +1,163 @@
+# Wormix-Changes: ported from ADT, trimmed to guide entries that exist in this fork
+- type: adtGuidebookCategory
+  id: Basics
+  name: adt-guidebook-category-basics
+  description: adt-guidebook-category-basics-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: Passenger
+  order: 0
+  entries:
+  - NewPlayer
+  - Controls
+  - CharacterCreation
+  - YourFirstCharacter
+  - Survival
+  - Glossary
+
+- type: adtGuidebookCategory
+  id: Crew
+  name: adt-guidebook-category-crew
+  description: adt-guidebook-category-crew-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: HeadOfPersonnel
+  order: 2
+  entries:
+  - Command
+  - Species
+  - Jobs
+
+- type: adtGuidebookCategory
+  id: Engineering
+  name: adt-guidebook-category-engineering
+  description: adt-guidebook-category-engineering-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: StationEngineer
+  order: 3
+  entries:
+  - Construction
+  - Power
+  - Atmospherics
+  - ShuttleCraft
+  - Networking
+  - Engineering
+
+- type: adtGuidebookCategory
+  id: Medical
+  name: adt-guidebook-category-medical
+  description: adt-guidebook-category-medical-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: MedicalDoctor
+  order: 4
+  entries:
+  - MedicalDoctor
+  - Chemist
+  - Cloning
+  - Cryogenics
+  - Medical
+
+- type: adtGuidebookCategory
+  id: Science
+  name: adt-guidebook-category-science
+  description: adt-guidebook-category-science-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: Scientist
+  order: 5
+  entries:
+  - AnomalousResearch
+  - Xenoarchaeology
+  - Robotics
+  - Science
+
+- type: adtGuidebookCategory
+  id: Security
+  name: adt-guidebook-category-security
+  description: adt-guidebook-category-security-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: SecurityOfficer
+  order: 6
+  entries:
+  - Forensics
+  - Defusal
+  - CriminalRecords
+  - ADTCorporateLaw
+  - Security
+
+- type: adtGuidebookCategory
+  id: Cargo
+  name: adt-guidebook-category-cargo
+  description: adt-guidebook-category-cargo-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: CargoTechnician
+  order: 7
+  entries:
+  - CargoBounties
+  - Salvage
+  - Cargo
+
+- type: adtGuidebookCategory
+  id: Service
+  name: adt-guidebook-category-service
+  description: adt-guidebook-category-service-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: Bartender
+  order: 8
+  entries:
+  - Bartender
+  - Botany
+  - Chef
+  - Janitorial
+  - Service
+
+- type: adtGuidebookCategory
+  id: References
+  name: adt-guidebook-category-references
+  description: adt-guidebook-category-references-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: Chemist
+  order: 9
+  entries:
+  - MedicinalRecipes
+  - Chemicals
+  - Drinks
+  - FoodRecipes
+  - Writing
+  - Lawsets
+
+- type: adtGuidebookCategory
+  id: Antagonists
+  name: adt-guidebook-category-antagonists
+  description: adt-guidebook-category-antagonists-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: Syndicate
+  order: 10
+  entries:
+  - Traitors
+  - Changelings
+  - Thieves
+  - Revolutionaries
+  - NuclearOperatives
+  - SpaceNinja
+  - Zombies
+  - Xenoborgs
+  - MinorAntagonists
+  - Antagonists
+
+- type: adtGuidebookCategory
+  id: Rules
+  name: adt-guidebook-category-rules
+  description: adt-guidebook-category-rules-description
+  icon:
+    sprite: Interface/Misc/job_icons.rsi
+    state: Lawyer
+  order: 12
+  rules: true

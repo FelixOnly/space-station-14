@@ -1,7 +1,7 @@
 using System.Linq;
+using Content.Client._ADT.Guidebook; // Wormix-Changes
 using Content.Client.Gameplay;
 using Content.Client.Guidebook;
-using Content.Client.Guidebook.Controls;
 using Content.Client.Lobby;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.UserInterface.Controls;
@@ -28,7 +28,7 @@ public sealed partial class GuidebookUIController : UIController, IOnStateEntere
 
     private const int PlaytimeOpenGuidebook = 60;
 
-    private GuidebookWindow? _guideWindow;
+    private ADTGuidebookWindow? _guideWindow; // Wormix-Changes
     private MenuButton? GuidebookButton => UIManager.GetActiveUIWidgetOrNull<MenuBar.Widgets.GameTopMenuBar>()?.GuidebookButton;
 
     public void OnStateEntered(LobbyState state)
@@ -46,9 +46,10 @@ public sealed partial class GuidebookUIController : UIController, IOnStateEntere
         DebugTools.Assert(_guideWindow == null);
 
         // setup window
-        _guideWindow = UIManager.CreateWindow<GuidebookWindow>();
+        _guideWindow = UIManager.CreateWindow<ADTGuidebookWindow>(); // Wormix-Changes
         _guideWindow.OnClose += OnWindowClosed;
         _guideWindow.OnOpen += OnWindowOpen;
+        _guideWindow.PopoutClosed += OnWindowClosed; // Wormix-Changes
 
         if (state is LobbyState &&
             _jobRequirements.FetchOverallPlaytime() < TimeSpan.FromMinutes(PlaytimeOpenGuidebook))
@@ -77,6 +78,7 @@ public sealed partial class GuidebookUIController : UIController, IOnStateEntere
 
     private void HandleStateExited()
     {
+        DisposeLegacyGuidebook(); // Wormix-Changes
         if (_guideWindow == null)
             return;
 
@@ -122,6 +124,11 @@ public sealed partial class GuidebookUIController : UIController, IOnStateEntere
 
     public void ToggleGuidebook()
     {
+        // Wormix-Changes-start
+        if (CloseLegacyGuidebook(true) || ClosePopoutGuidebook())
+            return;
+        // Wormix-Changes-end
+
         if (_guideWindow == null)
             return;
 
@@ -136,16 +143,16 @@ public sealed partial class GuidebookUIController : UIController, IOnStateEntere
         }
     }
 
+    // Wormix-Changes-start
     private void OnWindowClosed()
     {
+        if (_guideWindow?.IsPoppedOut == true)
+            return;
+
         if (GuidebookButton != null)
             GuidebookButton.Pressed = false;
-
-        if (_guideWindow != null)
-        {
-            _guideWindow.ReturnContainer.Visible = false;
-        }
     }
+    // Wormix-Changes-end
 
     private void OnWindowOpen()
     {
@@ -175,9 +182,11 @@ public sealed partial class GuidebookUIController : UIController, IOnStateEntere
         if (_guideWindow == null)
             return;
 
+        CloseLegacyGuidebook(); // Wormix-Changes
         if (GuidebookButton != null)
             GuidebookButton.SetClickPressed(!_guideWindow.IsOpen);
 
+        var openHome = guides == null && selected == null && _guideWindow.Selected == null; // Wormix-Changes
         if (guides == null)
         {
             guides = _prototypeManager.EnumeratePrototypes<GuideEntryPrototype>()
@@ -204,16 +213,9 @@ public sealed partial class GuidebookUIController : UIController, IOnStateEntere
                 selected = _configuration.GetCVar(CCVars.DefaultGuide);
             }
         }
-        var changed = _guideWindow.UpdateGuides(guides, rootEntries, forceRoot, selected);
+        _guideWindow.UpdateGuides(guides, rootEntries, forceRoot, openHome ? null : selected); // Wormix-Changes
 
-        // Expand up to depth-2.
-        if (changed)
-        {
-            _guideWindow.Tree.SetAllExpanded(false);
-            _guideWindow.Tree.SetAllExpanded(true, 1);
-        }
-
-        _guideWindow.OpenCenteredRight();
+        _guideWindow.OpenSized(); // Wormix-Changes
     }
 
     public void OpenGuidebook(
@@ -239,6 +241,10 @@ public sealed partial class GuidebookUIController : UIController, IOnStateEntere
 
     public void CloseGuidebook()
     {
+        // Wormix-Changes-start
+        CloseLegacyGuidebook(true);
+        ClosePopoutGuidebook();
+        // Wormix-Changes-end
         if (_guideWindow == null)
             return;
 

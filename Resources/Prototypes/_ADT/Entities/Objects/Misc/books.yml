@@ -1,0 +1,26 @@
+# Wormix-Changes: ported from ADT - hyperlink books that open the server wiki
+- type: entity
+  id: ADTBookSpaceLaw
+  parent: BaseItem
+  name: space law
+  description: A set of Nanotrasen guidelines for keeping law and order on their space stations.
+  components:
+  - type: Sprite
+    sprite: ADT/Objects/Misc/books.rsi
+    layers:
+    - state: KZ
+  - type: Tag
+    tags:
+    - Book
+  - type: UserInterface
+    interfaces:
+      enum.HyperLinkUiKey.Key:
+        type: HyperLinkBoundUserInterface
+  - type: HyperLink
+    url: https://wiki.wormix14.site
+  - type: MeleeWeapon # so you can teach using PAIN
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 3

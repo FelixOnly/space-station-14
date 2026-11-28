@@ -1,3 +1,4 @@
+using System.Numerics; // Wormix-Changes
 using Content.Shared.Chat;
 using Content.Shared.Input;
 using Robust.Client.UserInterface.Controls;
@@ -10,12 +11,16 @@ public class ChatInputBox : PanelContainer
     public const string StyleClassChatPanel = "ChatPanel";
     public const string StyleClassChatLineEdit = "ChatLineEdit";
     public const string StyleClassChatFilterOptionButton = "ChatFilterOptionButton";
+    public const string StyleClassChatSearchButton = "ChatSearchButton"; // Wormix-Changes
 
     public readonly ChannelSelectorButton ChannelSelector;
     public readonly HistoryLineEdit Input;
     public readonly ChannelFilterButton FilterButton;
+    public readonly Button SearchButton; // Wormix-Changes
     protected readonly BoxContainer Container;
     protected ChatChannel ActiveChannel { get; private set; } = ChatChannel.Local;
+
+    public event Action? OnSearchButtonPressed; // Wormix-Changes
 
     public ChatInputBox()
     {
@@ -42,6 +47,18 @@ public class ChatInputBox : PanelContainer
             StyleClasses = { StyleClassChatLineEdit }
         };
         Container.AddChild(Input);
+        // Wormix-Changes-start
+        SearchButton = new Button
+        {
+            Name = "SearchButton",
+            Text = "🔍",
+            ToolTip = Loc.GetString("hud-adt-chat-search-button-tooltip"),
+            StyleClasses = { StyleClassChatFilterOptionButton },
+            MinSize = new Vector2(28, 0)
+        };
+        SearchButton.OnPressed += _ => OnSearchButtonPressed?.Invoke();
+        Container.AddChild(SearchButton);
+        // Wormix-Changes-end
         FilterButton = new ChannelFilterButton
         {
             Name = "FilterButton",
